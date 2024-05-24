@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - FLASK_ENV=development
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: callcountdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    
+  front:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+
+volumes:
+  pgdata:
