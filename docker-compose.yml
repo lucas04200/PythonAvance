@@ -6,9 +6,9 @@ services:
     ports:
       - "5000:5000"
     depends_on:
-      - db
+      - db # Démarre l'API après la base de données (on avait rencontré des problèmes ou l'API crashait au démarrage car la db n'était pas encore lancée)
     environment:
-      - FLASK_ENV=development
+      - FLASK_ENV=development # Définit l'environnement Flask en mode développement
 
   db:
     image: postgres:13
@@ -19,14 +19,14 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data # Sauvegarde les données de PostgreSQL
     
   front:
     build: ./frontend
     ports:
-      - "3702:3702"
+      - "5173:5173"
     environment:
-      - VITE_API_URL=http://localhost:5000
+      - VITE_API_URL=http://localhost:5000 # URL de l'API pour le frontend (tentative pour faire marcher l'image web mais pas encore de résultat)
 
 volumes:
-  pgdata:
+  pgdata: # Déclare un volume pour la persistance des données de PostgreSQL

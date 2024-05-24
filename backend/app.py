@@ -82,15 +82,13 @@ def get_coordinates():
     conn = psycopg2.connect(host=DB_HOST, dbname=DB_NAME, user=DB_USER, password=DB_PASS)
     cur = conn.cursor()
     cur.execute('''
-        SELECT start_lat, start_lon, end_lat, end_lon FROM routes
+        SELECT start_lat, start_lon, end_lat, end_lon, path FROM routes
     ''')
     coordinates = cur.fetchall()
     cur.close()
     conn.close()
 
     return jsonify({"coordinates": coordinates})
-
-
 
 if __name__ == '__main__':
     init_db()
