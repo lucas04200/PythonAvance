@@ -11,7 +11,7 @@ COPY . /app/frontend
 RUN npm install
 
 # Exposer le port
-EXPOSE 5173
+EXPOSE 3702
 
 # Commande pour lancer l'application
 CMD ["npm", "run", "dev"]

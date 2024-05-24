@@ -24,7 +24,9 @@ services:
   front:
     build: ./frontend
     ports:
-      - "5173:5173"
+      - "3702:3702"
+    environment:
+      - VITE_API_URL=http://localhost:5000
 
 volumes:
   pgdata:
