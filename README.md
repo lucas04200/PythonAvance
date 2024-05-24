@@ -28,7 +28,13 @@ Voici une liste des technologies utilisées :
 - dans la racine du projet il faut lancer la commande "docker compose up --build"
 # Utilisation
 ***
-Utilisation avec la souris 
+Effectuez la commande dans votre terminal : 
+curl -X POST -H "Content-Type: application/json" -d '{"start_lat": 48.8566, "start_lon": 2.3522, "end_lat": 48.858844, "end_lon": 2.294351}' http://localhost:5000/route
+Vous pouvez modifier les longitudes et latitudes comme souhaité, vous aurez un chaine de caractère qui est un format pour recuperer une liste de coordonnées.
+
+Pour récupérer l'historique des coordonnées effectuez la requete : 
+http://localhost:5000/coordinates
+
 ## Attention
 ***
 - interface web non fonctionnelle ! 
